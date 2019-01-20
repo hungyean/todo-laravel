@@ -43,4 +43,16 @@ $task = Task::find($id);
 $task->delete();
 return Redirect::back()->with('message', "Task has been deleted");
 }
+public function edit($id)
+{
+$task = Task::find($id);
+return view('edit',compact('task','id'));
+}
+public function update(Request $request, $id)
+{
+  $task= Task::find($id);
+  $task->task=request('task');
+  $task->save();
+  return redirect('tasks');
+}
 }
