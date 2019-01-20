@@ -29,7 +29,7 @@
 <h4>Completed</h4>
 <ol>
 @foreach($completed_tasks as $c_task)
-<li>{{ $c_task->task }}&nbsp;&nbsp;&nbsp;<a class="btn btn-warning" href ={{url('/'.$c_task->id.'/incomplete')}}>Mark As Incomplete</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href ={{url('/'.$c_task->id.'/delete')}}>Delete</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-info" href ={{url('/'.$c_task->id.'/edit')}}>Edit</a></li>
+<li>Completed &nbsp;{{ $c_task->task }}&nbsp;&nbsp;&nbsp;<a class="btn btn-warning" href ={{url('/'.$c_task->id.'/incomplete')}}>Mark As Incomplete</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href ={{url('/'.$c_task->id.'/delete')}}>Delete</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-info" href ={{url('/'.$c_task->id.'/edit')}}>Edit</a></li>
 @endforeach
 </ol>
 </div>
