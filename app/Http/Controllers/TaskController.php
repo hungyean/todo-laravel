@@ -30,6 +30,13 @@ $task->iscompleted = true;
 $task->save();
 return Redirect::back()->with("message", "Task has been added to completed list");
 }
+public function incomplete($id)
+{
+$task = Task::find($id);
+$task->iscompleted = false;
+$task->save();
+return Redirect::back()->with("message", "Task has been added to incomplete list");
+}
 public function destroy($id)
 {
 $task = Task::find($id);

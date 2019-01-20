@@ -23,13 +23,13 @@
 <hr>
 <ol>
 @foreach($tasks as $task)
-<li><a href ={{url('/'.$task->id.'/complete')}}>{{ $task->task }}</a></li>
+<li>{{ $task->task }}&nbsp;&nbsp;&nbsp;<a class="btn btn-success" href ={{url('/'.$task->id.'/complete')}}>Mark As Completed</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href ={{url('/'.$task->id.'/delete')}}>Delete</a></li>
 @endforeach
 </ol>
 <h4>Completed</h4>
 <ol>
 @foreach($completed_tasks as $c_task)
-<li><a href ={{url('/'.$c_task->id.'/delete')}}>{{ $c_task->task }}</a></li>
+<li>{{ $c_task->task }}&nbsp;&nbsp;&nbsp;<a class="btn btn-warning" href ={{url('/'.$c_task->id.'/incomplete')}}>Mark As Incomplete</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-success" href ={{url('/'.$c_task->id.'/delete')}}>delete</a></li>
 @endforeach
 </ol>
 </div>
