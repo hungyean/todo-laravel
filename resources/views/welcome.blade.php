@@ -33,17 +33,14 @@
 <button type="submit" class="btn btn-success">Add</button>
 </div>
 </form>
+
+
 <hr>
 <h4>Show loops</h4>
 @foreach ($tasks as $task)
-    @if ($loop->first)
-        This is the first iteration.
+    @if ($loop->parent)
+        This is current loop.
     @endif
-
-    @if ($loop->last)
-        This is the last iteration.
-    @endif
-
     <p>This is user {{ $task->id }}</p>
 @endforeach
 <h4>Incompleted</h4>
@@ -63,12 +60,22 @@
 
 <h4>Date</h4>
 @foreach($tasks as $task)
-<?php echo ($task->task)." : Created At ".($task->created_at)->format('m/d/Y H:i')."  Updated At  ".($task->updated_at)->format('m/d/Y H:i'); ?>
+<?php echo ($task->task)." : Created At ".($task->created_at)->format('m/d/Y H:i')."  Updated At  ".($task->updated_at)->format('m/d/Y H:i')."<br/>"; ?>
 @endforeach
+
 </div>
 </div>
+<h4>Working environment</h4>
+@env('local')
+    The application is in the local environment...
 
+@elseenv('testing')
+    The application is in the testing environment...
 
+@else
+    The application is not in the local or testing environment...
+
+@endenv
 <?php
 #@component('alert')
     #@slot('title')
