@@ -61,9 +61,9 @@
 </ol>
 <br><br>
 
-<h4>Created At</h4>
+<h4>Date</h4>
 @foreach($tasks as $task)
-<?php echo ($task->created_at)->format('m/d/Y H:i'); ?>
+<?php echo ($task->task)." : Created At ".($task->created_at)->format('m/d/Y H:i')."  Updated At  ".($task->updated_at)->format('m/d/Y H:i'); ?>
 @endforeach
 </div>
 </div>
