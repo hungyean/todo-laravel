@@ -10,3 +10,4 @@ Route::resource('tasks', 'TaskController');
 Route::get('greeting', function () {
     return view('welcome', ['name' => 'Liew']);
 });
+?>
