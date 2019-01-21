@@ -34,7 +34,7 @@
 <li>{{ $task->task }}&nbsp;&nbsp;&nbsp;<a class="btn btn-success" href ={{url('/'.$task->id.'/complete')}}>Mark As Completed</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href ={{url('/'.$task->id.'/delete')}}>Delete</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-info" href ={{url('/'.$task->id.'/edit')}}>Edit</a></li><br>
 @endforeach
 </ol>
-<h4>Complet</h4>
+<h4>Comple</h4>
 <ol>
 @foreach($completed_tasks as $c_task)
 <li>Completed &nbsp;{{ $c_task->task }}&nbsp;&nbsp;&nbsp;<a class="btn btn-warning" href ={{url('/'.$c_task->id.'/incomplete')}}>Mark As Incomplete</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href ={{url('/'.$c_task->id.'/delete')}}>Delete</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-info" href ={{url('/'.$c_task->id.'/edit')}}>Edit</a></li>
