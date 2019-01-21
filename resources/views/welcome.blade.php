@@ -46,23 +46,29 @@
 
     <p>This is user {{ $task->id }}</p>
 @endforeach
-
+<h4>Incompleted</h4>
 <ol>
+
 @foreach($tasks as $task)
 <li>{{ $task->task }}&nbsp;&nbsp;&nbsp;<a class="btn btn-success" href ={{url('/'.$task->id.'/complete')}}>Mark As Completed</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href ={{url('/'.$task->id.'/delete')}}>Delete</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-info" href ={{url('/'.$task->id.'/edit')}}>Edit</a></li><br>
 @endforeach
 </ol>
+</ol>
 <h4>Completed</h4>
-<ol>
 @foreach($completed_tasks as $c_task)
 <li>Completed &nbsp;{{ $c_task->task }}&nbsp;&nbsp;&nbsp;<a class="btn btn-warning" href ={{url('/'.$c_task->id.'/incomplete')}}>Mark As Incomplete</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href ={{url('/'.$c_task->id.'/delete')}}>Delete</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-info" href ={{url('/'.$c_task->id.'/edit')}}>Edit</a></li>
 @endforeach
 </ol>
+<br><br>
+
+<h4>Created At</h4>
+@foreach($tasks as $task)
+<?php echo ($task->created_at)->format('m/d/Y H:i'); ?>
+@endforeach
 </div>
 </div>
-@for($i=0;$i<10;$i++)
-    {{$i}}
-@endfor
+
+
 <?php
 #@component('alert')
     #@slot('title')
@@ -75,6 +81,9 @@
 #@unless (Auth::check())
 #You r not signed in
 #@endunless
+#@for($i=0;$i<10;$i++)
+    #{{$i}}
+#@endfor
 ?>
 @endsection
 
