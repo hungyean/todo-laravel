@@ -7,4 +7,6 @@ Route::get("/{id}/delete", "TaskController@destroy");
 Route::get("/{id}/edit", "TaskController@edit");
 Route::get("/{id}/update", "TaskController@update");
 Route::resource('tasks', 'TaskController');
-
+Route::get('greeting', function () {
+    return view('welcome', ['name' => 'Liew']);
+});
