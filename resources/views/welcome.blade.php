@@ -11,6 +11,14 @@
 @endif
 <div class="col-md-6">
 <h1>Todo List</h1>
+@if (count($tasks) === 1)
+    I have one task!
+@elseif (count($tasks) > 1)
+    I have multiple tasks!
+@else
+    I don't have any tasks!
+@endif
+<br/><br/>
 <form method="POST" action={{url('/task')}}>
 {{csrf_field()}}
 <div class="form-group">
@@ -34,4 +42,21 @@
 </ol>
 </div>
 </div>
+@for($i=0;$i<10;$i++)
+    {{$i}}
+@endfor
+<?php
+#@component('alert')
+    #@slot('title')
+    #    Forbidden
+   # @endslot
+
+    #You are not allowed to access this resource!
+#@endcomponent
+
+#@unless (Auth::check())
+#You r not signed in
+#@endunless
+?>
 @endsection
+
