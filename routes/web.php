@@ -50,6 +50,21 @@ Route::get('po/ut',function(){
     return "over";
 });
 
+Route::get('/task/{id}','show');
+
+Route::resource('photos','PhotoController')->only([
+    'index','show'
+]);
+Route::resource('photos','PhotoController')->except([
+    'create','store','update','destroy'
+]);
+Route::resources(
+    [
+        'photos' => 'PhotoController',
+        'posts' => 'PostController'
+    ]
+);
+
 // Route::get('profile/{id}',function(App\Task $task){
 //     return "goodsane";
 // });

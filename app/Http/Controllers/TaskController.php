@@ -56,5 +56,8 @@ public function update(Request $request, $id)
   $task->save();
   return redirect('tasks');
 }
-
+public function show($id){
+    $task = Task::find($id);
+    return $task->task;
+}
 }
