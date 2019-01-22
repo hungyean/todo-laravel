@@ -1,5 +1,6 @@
 <?php
 use App\Task;
+use App\Http\Middleware\CheckAge;
 Route::get('/', "TaskController@index");
 Route::post("/task", "TaskController@store");
 Route::group(['prefix' => '{id}'],function(){
@@ -43,6 +44,10 @@ Route::middleware(['first','second'])->group(function(){
     Route::get('j/j',function(){
         return "Ac Milan";
     });
+});
+
+Route::get('po/ut',function(){
+    return "over";
 });
 
 // Route::get('profile/{id}',function(App\Task $task){
@@ -106,7 +111,9 @@ Route::get('/tasks/{task}',function(App\Task $task){
     return $task->task;
 })
 
-
+// Route::get('/',function(){
+//     return "dumps";
+// })->middleware('web');
 // $route = Route::current();
 // $name = Route::currentRouteName();
 // $action = Route::currentRouteAction();
