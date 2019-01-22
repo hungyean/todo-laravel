@@ -34,7 +34,6 @@
 </div>
 </form>
 
-
 <hr>
 <h4>Show loops</h4>
 @foreach ($tasks as $task)
@@ -43,6 +42,7 @@
     @endif
     <p>This is user {{ $task->id }}</p>
 @endforeach
+
 <h4>Incompleted</h4>
 <ol>
 
