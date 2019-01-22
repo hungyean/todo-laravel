@@ -37,12 +37,12 @@ $task->iscompleted = false;
 $task->save();
 return Redirect::back()->with("message", "Task has been added to incomplete list");
 }
-public function destroy($id)
-{
-$task = Task::find($id);
-$task->delete();
-return Redirect::back()->with('message', "Task has been deleted");
-}
+#public function destroy($id)
+#{
+#$task = Task::find($id);
+#$task->delete();
+#return Redirect::back()->with('message', "Task has been deleted");
+#}
 public function edit($id)
 {
 $task = Task::find($id);
@@ -55,4 +55,5 @@ public function update(Request $request, $id)
   $task->save();
   return redirect('tasks');
 }
+
 }
