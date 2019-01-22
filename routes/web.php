@@ -14,6 +14,49 @@ Route::group(['prefix' => '{id}'],function(){
     return Redirect::back()->with('message', "Task has been deleted");
     });
 });
+
+Route::get('task/{id}',function($id){
+    $task = Task::find($id);
+    return 'Task'.$task->id.'<br/>'.$task->task;
+});
+// Route::get('tasks/{id?}',function($id = 16){
+//     $task = Task::find($id);
+//     return $task->task;
+// });
+Route::get('user/{name?}',function($name = "Liew"){
+    return $name;
+})->where('name','[A-Za-z]+');
+
+Route::get('search/{search}',function($search){
+    return $search;
+})->where('search','.*');
+
+Route::get('lalal/{id}/ajajaj',function($id){
+    return 'sssss';
+})->name('ajajaj');
+
+
+Route::middleware(['first','second'])->group(function(){
+    Route::get('/a',function(){
+        return "Unimas";
+    });
+    Route::get('j/j',function(){
+        return "Ac Milan";
+    });
+});
+
+// Route::get('profile/{id}',function(App\Task $task){
+//     return "goodsane";
+// });
+#Route::get("we",function(){
+ #   return 'hello world';
+#});
+#Route::get("no",function(){
+ #   return 'no';
+#});
+#Route::view('we','we');
+#Route::permanentRedirect('we','no');
+#Route::redirect('we','no',301);
 #Route::get("/{id}/complete", "TaskController@complete");
 #Route::get("/{id}/incomplete", "TaskController@incomplete");
 #Route::get("/{id}/delete", "TaskController@destroy");
@@ -37,5 +80,36 @@ Route::resource('tasks', 'TaskController');
     #    return 'Hello World';
     #});
 #});''
+Route::name('rt.')->group(function(){
+    Route::get('rts',function(){
+        return "admin using";
+    });
+});
+
+Route::prefix('uu')->group(function(){
+    Route::get('us',function(){
+        return "ACM";
+    });
+});
+
+Route::middleware('auth:api','throttle:60,1')->group(function(){
+    Route::get('/hungyean',function(){
+        return "acm";
+    });
+});
+
+Route::get('api/tasks/{task}',function(App\Task $task){
+    return $task->id.'<br>'.$task->task;
+});
+
+Route::get('/tasks/{task}',function(App\Task $task){
+    return $task->task;
+})
+
+
+// $route = Route::current();
+// $name = Route::currentRouteName();
+// $action = Route::currentRouteAction();
+
 
 ?>

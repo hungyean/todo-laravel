@@ -9,10 +9,11 @@ use App\Task;
 
 class TaskController extends Controller
 {
-public function index(){
+public function index(Request $request){
 $tasks = Task::where("iscompleted", false)->orderBy("id", "DEC")->get();
 $completed_tasks = Task::where("iscompleted", true)->get();
 return view("welcome", compact("tasks", "completed_tasks"));
+
 }
 public function store(Request $request)
 {

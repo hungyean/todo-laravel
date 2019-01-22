@@ -15,6 +15,7 @@
 </div>
 @endif
 <div class="col-md-6">
+
 <h1>Todo List</h1>
 @if (count($tasks) === 1)
     I have one task!
@@ -33,8 +34,8 @@
 <button type="submit" class="btn btn-success">Add</button>
 </div>
 </form>
+<hr/>
 
-<hr>
 <h4>Show loops</h4>
 @foreach ($tasks as $task)
     @if ($loop->parent)
@@ -62,9 +63,6 @@
 @foreach($tasks as $task)
 <?php echo ($task->task)." : Created At ".($task->created_at)->format('m/d/Y H:i')."  Updated At  ".($task->updated_at)->format('m/d/Y H:i')."<br/>"; ?>
 @endforeach
-
-</div>
-</div>
 <h4>Working environment</h4>
 @env('local')
     The application is in the local environment...
@@ -76,6 +74,12 @@
     The application is not in the local or testing environment...
 
 @endenv
+
+
+
+</div>
+</div>
+
 <?php
 #@component('alert')
     #@slot('title')
