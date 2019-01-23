@@ -1,5 +1,7 @@
 <?php
 use App\Task;
+use Illuminate\Http\Request;
+use Illuminat\Http\Response;
 use App\Http\Middleware\CheckAge;
 Route::get('/', "TaskController@index");
 Route::post("/task", "TaskController@store");
@@ -16,10 +18,11 @@ Route::group(['prefix' => '{id}'],function(){
     });
 });
 
-Route::get('task/{id}',function($id){
-    $task = Task::find($id);
-    return 'Task'.$task->id.'<br/>'.$task->task;
-});
+// Route::get('task/{id}',function($id){
+//     $task = Task::find($id);
+//     return 'Task'.$task->id.'<br/>'.$task->task;
+// });
+Route::get('task/22','TaskController@display');
 // Route::get('tasks/{id?}',function($id = 16){
 //     $task = Task::find($id);
 //     return $task->task;
@@ -50,20 +53,15 @@ Route::get('po/ut',function(){
     return "over";
 });
 
-Route::get('/task/{id}','show');
+// Route::get('/task/{id}','show');
 
-Route::resource('photos','PhotoController')->only([
-    'index','show'
-]);
-Route::resource('photos','PhotoController')->except([
-    'create','store','update','destroy'
-]);
 Route::resources(
     [
         'photos' => 'PhotoController',
         'posts' => 'PostController'
     ]
 );
+// Route::get('/','TaskController@display');
 
 // Route::get('profile/{id}',function(App\Task $task){
 //     return "goodsane";
@@ -124,7 +122,7 @@ Route::get('api/tasks/{task}',function(App\Task $task){
 
 Route::get('/tasks/{task}',function(App\Task $task){
     return $task->task;
-})
+});
 
 // Route::get('/',function(){
 //     return "dumps";
@@ -133,5 +131,77 @@ Route::get('/tasks/{task}',function(App\Task $task){
 // $name = Route::currentRouteName();
 // $action = Route::currentRouteAction();
 
+// Route::get('/yugioh',function(){
+//     $minutes = '60';
+//     return response('Hello World')->cookie(
+//         'name','value',$minutes
+//     );
+// });
 
+Route::get('home',function(){
+    $response = new Illuminate\Http\Response('Ac milan');
+    $response->withCookie(cookie('name','value','minutes'));
+    return $response;
+    // return response('hello world',200)
+    // ->header('Content-Type','text/plain');
+});
+Route::get('cookie/set','CookieController@setCookie');
+Route::get('cookie/get','CookieController@getCookie');
+Route::get('json','CookieController@attachCookie');
+Route::get('/register',function(){
+    return view('register');
+});
+Route::post('absa/fafa','UserRegistration@postRegistration');
+Route::get('notme',function(){
+        return response()->json([
+            'name' => 'Liew',
+            'age' => '56'
+
+        ]);
+});
+Route::get('nothim',function(){
+    return redirect()->away('https://www.google.com');
+}
+);
+
+// Route::get('/',function(){
+//     return view('new.redirect',['name'=>'Liew']);
+//     //return view('new.redirect')->with('name','Liew');
+// });
+// Route::post('user/profile',function(){
+//     return redirect('home')->with('status','profile updated???');
+// });
+Route::get('/test2',function(){
+    return view('new.redirect');
+});
+Route::get('/test',function(){
+    return view('new.test');
+}
+);
+
+// Route::get('/oppo',function(){
+//     return view('master');
+// });
+Route::get('oo','RedirectController@index');
+Route::get('/rc',function(){
+    return redirect()->action('RedirectController@index');
+});
+
+Route::get('helper',function(){
+    return view('helpers.helper1');
+});
+
+ROutE::get('hlele',function(){
+    // $array =[10,20,30];
+    // $first = array_first($array, function($value,$key){
+    //     return $value >= 15;
+    // });
+    // return $first;
+//    $nrr = ['products'=>['desk'=>['price'=>100]]];
+//    $nnrr = array_set($nrr,'products.desk.price',200);
+//    return $nnrr;
+   $data = ['products'=>['desk'=>['price'=>100]]];
+   $adata = data_fill($data,'products.desk.price',200);
+   return $adata;
+})
 ?>

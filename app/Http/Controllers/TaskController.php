@@ -19,7 +19,7 @@ public function store(Request $request)
 {
 $input = $request->all();
 $task = new Task();
-$task->task = request("task");
+$task->task = $request->input('task');
 $task->iscompleted = false;
 $task->save();
 return Redirect::back()->with("message", "Task has been added");
@@ -52,12 +52,25 @@ return view('edit',compact('task','id'));
 public function update(Request $request, $id)
 {
   $task= Task::find($id);
-  $task->task=request('task');
+  #$task->task = request('task');
+  $task->task=$request->task;
+//   if($request->has('task')){
+//       return "Correct";
+//   }
   $task->save();
-  return redirect('tasks');
+  $request->flash();
+return redirect('tasks');
+ # return redirect('po/ut')->withInput();
 }
 public function show($id){
     $task = Task::find($id);
     return $task->task;
+}
+
+public function display(Request $request){
+    $uri = $request->fullUrl();
+    if ($request->is('task/22')) {
+        return $uri;
+    }
 }
 }
