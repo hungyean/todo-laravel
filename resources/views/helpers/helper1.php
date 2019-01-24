@@ -1,4 +1,5 @@
 <?php
+
     $arr = array_add(['name'=>'Liew'],'Price',10);
     $arr = implode('',$arr);
     echo $arr."<br/><br/>";
@@ -144,13 +145,40 @@
     $result2 = str_after('This is my name','This is');
     echo $result2."<br/><br/>";
 
-    $adjusted = str_finish('t/r','#%@*!');
+    $adjusted = str_finish('eira','naz');
     echo $adjusted."<br/><br/>";
 
     $truncated = str_limit('ag==asjalalalalalalalala',3);
-    echo $truncated;
+    echo $truncated."<br/><br/>";
 
+    $plural = str_plural('cat');
+    echo $plural."<br/><br/>";
 
+    $string2 = str_random(40);
+    echo $string2."<br/><br/>";
+
+    $replaced4 = str_replace_first('the','an','the ajaj aaj');
+    echo $replaced4."<br/><br/>";
+
+    // $container = app();
+    // echo $container;
+    $pwd = bcrypt("m-secret-code");
+    echo $pwd."<br/><br/>";
+
+    $collection = collect(['Liew','Lau']);
+    echo $collection;
+
+    $v1 = 'anyone';
+    $dump = dd($v1);
+    echo $dump."<br><br>";
+
+    // $infoo = info('Somethings');
+    // echo $infoo;
+
+    // $enpwd = encrypt("Liew");
+    // echo $enpwd."<br/><br/>";
+    // $dpwd = decrypt($pwd);
+    // echo $dpwd;
 
 //    $data = ['products'=>['desk'=>['price'=>100]]];
 //    $adata = data_fill($data,'products.desk.price',200);

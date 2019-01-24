@@ -203,5 +203,23 @@ ROutE::get('hlele',function(){
    $data = ['products'=>['desk'=>['price'=>100]]];
    $adata = data_fill($data,'products.desk.price',200);
    return $adata;
-})
+});
+
+// Route::get('/qqq',function(){
+//    return retry(5,function(){
+//    },100);
+//     //return redirect()->route('route.hlele');
+//     #return view('helpers.helper1');
+// });
+
+Route::get('be','Mailcontroller@basic_email');
+
+// Route::get('rtdb\{}',function($id){
+//     $flights = App\Admin::find($id);
+//     echo $flight->name."<br/>";
+// });
+// Route::get('updb\{id}',function($id){
+//     $flight = App\Admin::find($id);
+//     echo $flight->name;
+// });
 ?>
